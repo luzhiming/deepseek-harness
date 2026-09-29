@@ -65,7 +65,7 @@ ValidationError: invalid config:
   - $.targets expected array but got not-an-array (at targets)
 ```
 
-The plugin's fiber goes to FAILED, and this tutorial's launcher exits with status 1 after printing the error. A plugin should also reject schema-valid config that names an unavailable resource or provider as soon as it can resolve that reference.
+The plugin's fiber goes to FAILED. The error is silently caught by the loader and stored in `fiber._error`; it does not print automatically. Use fiber state inspection or a diagnostic plugin to observe load failures. A plugin should also reject schema-valid config that names an unavailable resource or provider as soon as it can resolve that reference.
 
 <a id="volatile-fields"></a>
 ## Volatile fields

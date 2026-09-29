@@ -65,7 +65,7 @@ ValidationError: invalid config:
   - $.targets expected array but got not-an-array (at targets)
 ```
 
-插件的 fiber 进入 FAILED 状态，本教程的启动器打印错误后以状态码 1 退出。如果某个插件的配置通过了 schema 验证，但其中指定的资源或提供方不可用，该插件也应当在能解析该引用时立即拒绝。
+插件的 fiber 进入 FAILED 状态。错误被 loader 静默捕获，存储在 `fiber._error` 中，不会自动打印。如需观察加载失败，请使用 fiber 状态检查或诊断插件。如果某个插件的配置通过了 schema 验证，但其中指定的资源或提供方不可用，该插件也应当在能解析该引用时立即拒绝。
 
 <a id="volatile-fields"></a>
 ## Volatile 字段
